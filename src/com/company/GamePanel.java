@@ -98,27 +98,23 @@ public class GamePanel extends JPanel implements ActionListener {
         g.drawString(game.months[game.currentLevel], 1000, 100);
 
         Image boardImage = Toolkit.getDefaultToolkit().getImage("calendar.jpg");
-        g.drawImage(boardImage, 0, 110, 1820, 1000, 0, 35, 1099, 590, this);
+        g.drawImage(boardImage, 0, 110,1600, 1100, this);
 
         //where the pawn/test starts from
-        int startX = 2;
-        int startY = 200;
-        //dimensions of the pawn
-        int squareWidth = 200;
-        int squareHeight = 160;
+        int startX = 15;
+        int startY = 190;
 
         Font chargeFont = new Font("Utopia", Font.BOLD, 12);
         g.setFont(chargeFont);
 
         for(int i = 0; i < 31; i++){
-            //the space between the
-            int sqWidth = 225;
-            int sqHeight = 180;
-            int topX = startX + ((i % 7)* sqWidth) + 10;
-            int topY =  startY + ((i/7) * sqHeight) + 55;
+            //the top x,y where the text starts
+            int topX = startX + ((i % 7)* 225) + 25;
+            int topY =  startY + ((i / 7) * 180) + 75;
             g.setColor(Color.BLACK);
             g.drawString(game.prompts[i], topX, topY);
 
+            //increases the charges each month
             double charge = (int)Math.abs(game.charges[i] * (1 + game.currentLevel/1.1));
             if(game.charges[i] < 0){
                 g.setColor(Color.RED);
@@ -130,10 +126,18 @@ public class GamePanel extends JPanel implements ActionListener {
                 g.drawString("Get $" + charge, topX, topY + 12);
             }
         }
-        int topX = startX + (game.currentPosition % 7)* squareWidth - 75;
-        int topY =  startY + (game.currentPosition/7) * squareHeight - 15;
+
+        //dimensions of the pawn
+        int squareWidth = 180;
+        int squareHeight = 170;
+
+        //controls the x,y of the pawn when it moves
+        int topX = -20 + (game.currentPosition % 7)* squareWidth;
+        int topY =  220 + (game.currentPosition / 7) * squareHeight + 80;
+        System.out.println(game.currentPosition + " " + topX + " " + topY);
         int bottomX = topX + squareWidth - 120;
         int bottomY = topY + squareHeight - 120;
+        System.out.println(bottomX + " " + bottomY);
 
         Image pawn = Toolkit.getDefaultToolkit().getImage("Pawn.png");
         g.drawImage(pawn, topX, topY, bottomX,  bottomY, 0, 7, 300, 240, this);

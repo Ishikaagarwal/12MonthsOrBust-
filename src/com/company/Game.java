@@ -1,7 +1,7 @@
 package com.company;
 
 public class Game{
- //define global variables such as balance of player, and money in the bank
+    //define global variables such as balance of player, and money in the bank
     int playerBalance, moneyInBank;
     int currentPosition;
     int currentLevel;

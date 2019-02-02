@@ -1,3 +1,4 @@
+
 package com.company;
 
 import java.awt.*;
@@ -67,4 +68,3 @@ public class ParentPanel extends JPanel implements MouseListener {
         isTutorialClicked = true;
     }
 }
-

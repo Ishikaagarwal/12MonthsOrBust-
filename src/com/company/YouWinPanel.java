@@ -17,7 +17,7 @@ class YouWinPanel extends JPanel {
 
         //display youwin.jpg to the panel
         //make sure its square because the pic is square
-        Image titleImage = Toolkit.getDefaultToolkit().getImage("youwin.jpg");
+        Image titleImage = Toolkit.getDefaultToolkit().getImage("youWin.jpg");
         g.drawImage(titleImage, 0, 0, 1100, 1100, 0, 0, 400, 400, this);
 
         //make pretty font and color for the panel

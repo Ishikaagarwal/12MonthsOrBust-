@@ -50,7 +50,7 @@ public class GamePanel extends JPanel implements ActionListener {
                 }
             }
 
-            double charge = game.charges[game.currentPosition - 1] * (1 +game.currentLevel/2.5);
+            double charge = game.charges[game.currentPosition - 1] * (1 +game.currentLevel/4.5);
             game.playerBalance += charge;
 
             if(game.playerBalance < 0){

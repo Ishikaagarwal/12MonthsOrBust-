@@ -8,8 +8,8 @@ public class TitlePanel extends JPanel {
         super.paintComponent(g);
         g.setFont(new Font("Utopia", Font.BOLD, 100));
         g.setColor(Color.BLUE);
-        g.drawString("12 Months or Bust!", 550, 800);   //title of game
+        g.drawString("12 Months or Bust!", 350, 500);   //title of game
         g.setFont(new Font("Utopia", Font.BOLD, 35));
-        g.drawString("Click through to continue.",700, 900);      //the prompt
+        g.drawString("Click through to continue.",300, 600);      //the prompt
     }
 }

@@ -42,7 +42,7 @@ public class BankPanel extends JPanel implements ActionListener {
             g.setColor(Color.RED);
             Font errorFont = new Font("Utopia", Font.BOLD, 50);
             g.setFont(errorFont);
-            g.drawString("Please enter a valid amount", 0, 85);
+            g.drawString("Please enter a valid amount", 0, 200);
             g.setColor(Color.BLACK);
         }
     }
@@ -52,7 +52,7 @@ public class BankPanel extends JPanel implements ActionListener {
             String amount = txtMoney.getText();
             int money = Integer.parseInt(amount);
 
-            if (money < game.playerBalance) {
+            if (money < game.playerBalance && money > 0) {
                 game.playerBalance -= money;
                 game.moneyInBank = money;
                 isNotEnoughBalance = false;

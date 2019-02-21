@@ -50,7 +50,7 @@ public class GamePanel extends JPanel implements ActionListener {
                 }
             }
 
-            double charge = game.charges[game.currentPosition - 1] * (1 +game.currentLevel/4.5);
+            double charge = game.charges[game.currentPosition - 1] * (1 +game.currentLevel/2.5);
             game.playerBalance += charge;
 
             if(game.playerBalance < 0){
@@ -95,52 +95,51 @@ public class GamePanel extends JPanel implements ActionListener {
         g.drawString("Current Balance: "+ game.playerBalance, 300, 100);
 
         g.drawString("Money in Savings Account: " + game.moneyInBank, 600, 100);
-        g.drawString(game.months[game.currentLevel], 1000, 100);
+        g.drawString(game.months[game.currentLevel], 1100, 100);
 
         Image boardImage = Toolkit.getDefaultToolkit().getImage("calendar.jpg");
         g.drawImage(boardImage, 0, 110,1600, 1100, this);
 
         //where the pawn/test starts from
-        int startX = 15;
-        int startY = 190;
+        int startX = 20;
+        int startY = 250;
 
         Font chargeFont = new Font("Utopia", Font.BOLD, 12);
         g.setFont(chargeFont);
 
         for(int i = 0; i < 31; i++){
             //the top x,y where the text starts
-            int topX = startX + ((i % 7)* 225) + 25;
-            int topY =  startY + ((i / 7) * 180) + 75;
+            int topX = startX + 235 * ((i % 7));
+            int topY =  startY + 155 * (i / 7);
             g.setColor(Color.BLACK);
             g.drawString(game.prompts[i], topX, topY);
 
             //increases the charges each month
-            double charge = (int)Math.abs(game.charges[i] * (1 + game.currentLevel/1.1));
+            double charge = (int)Math.abs(game.charges[i] * (1 + game.currentLevel/0.7));
             if(game.charges[i] < 0){
                 g.setColor(Color.RED);
-                g.drawString("Pay $" + charge, topX, topY + 12);
+                g.drawString("Pay $" + charge, topX, topY + 15);
             }
             else{
                 Color myGreen = new Color(0, 112, 0);
                 g.setColor(myGreen);
-                g.drawString("Get $" + charge, topX, topY + 12);
+                g.drawString("Get $" + charge, topX, topY + 15);
             }
         }
 
         //dimensions of the pawn
-        int squareWidth = 180;
-        int squareHeight = 170;
+        int squareWidth = 50;
+        int squareHeight = 50;
 
         //controls the x,y of the pawn when it moves
-        int topX = -20 + (game.currentPosition % 7)* squareWidth;
-        int topY =  220 + (game.currentPosition / 7) * squareHeight + 80;
-        System.out.println(game.currentPosition + " " + topX + " " + topY);
-        int bottomX = topX + squareWidth - 120;
-        int bottomY = topY + squareHeight - 120;
+        int topX = 75 + ((game.currentPosition - 1) % 7) * 235;
+        int topY =  300 + ((game.currentPosition - 1) / 7) * 155;
+        int bottomX = topX + squareWidth;
+        int bottomY = topY + squareHeight;
         System.out.println(bottomX + " " + bottomY);
 
         Image pawn = Toolkit.getDefaultToolkit().getImage("Pawn.png");
-        g.drawImage(pawn, topX, topY, bottomX,  bottomY, 0, 7, 300, 240, this);
+        g.drawImage(pawn, topX, topY, bottomX,  bottomY, 15, 10, 240, 240, this);
 
         if(isRolling){
             g.setFont(new Font("Utopia",Font.BOLD, 20));

@@ -47,12 +47,12 @@ public class ParentPanel extends JPanel implements MouseListener {
         }
     }
 
-    public void ShowBoardPanel() {
-        layoutMan.show(this, "board and status panels");
-    }
-
     public void ShowBankPanel() {
         layoutMan.show(this, "bank");
+    }
+
+    public void ShowBoardPanel() {
+        layoutMan.show(this, "board and status panels");
     }
 
     public void ShowGameOverPanel() {
